@@ -1,41 +1,34 @@
 import { useState } from "react";
 
-function Hog({ hogObj }){
+function Hog({ name, image, specialty, weight, medal, greased }){
     const [detailToggle, setDetailToggle] = useState(false)
     
-    function clickHandler(e){
+    function clickHandler(){
         setDetailToggle(!detailToggle)
     }
 
-    if(detailToggle === true){
-        return(
+    return(
         <div className="card">
             <div className="image">
-                <img src={hogObj.image} alt={hogObj.name} name={hogObj.name} onClick={clickHandler}></img>
+                <img src={image} alt={name}></img>
             </div>
             <div className="content">
-                <div className="header">{hogObj.name}</div>
-                <div className="meta">
-                    <div>{`Specialty: ${hogObj.specialty}`}</div>
-                    <div>{`Weight: ${hogObj.weight}`}</div>
-                    <div>{`Highest Medal Achieved: ${hogObj["highest medal achieved"]}`}</div>
-                    <div>{`Greased: ${hogObj.greased}`}</div>
-                </div>
+                <div className="header">{name}</div>
+                {detailToggle ? (
+                    <div>
+                    <div className="meta">
+                        <div>{`Specialty: ${specialty}`}</div>
+                        <div>{`Weight: ${weight} little piggies`}</div>
+                        <div>{`Highest Medal Achieved: ${medal}`}</div>
+                        <div>{greased ? `greasy boi` : `squeaky clean`}</div>
+                    </div>
+                    <span onClick={clickHandler}>Click to Hide Details</span>
+                    
+                    </div>) : <span onClick={clickHandler}>Click for More Detail</span>
+                }
             </div>
         </div>
-        )
-    }
-    else{
-        return(
-            <div className="card">
-                <div className="image">
-                    <img src={hogObj.image} alt={hogObj.name} name={hogObj.name} onClick={clickHandler}></img>
-                </div>
-                <div className="content">
-                    <div className="header">{hogObj.name}</div>
-                </div>
-            </div>
-         
-    )}
+    )     
 }
+
 export default Hog

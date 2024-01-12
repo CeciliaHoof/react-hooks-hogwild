@@ -4,7 +4,14 @@ function HogContainer({ hogsArr }){
     
     return(
         <div className="ui link cards">
-            {hogsArr.map(hog => <Hog hogObj={hog} key={hog.name}/>)}
+            {hogsArr.map(hog => 
+                <Hog 
+                    name={hog.name}
+                    image={hog.image}
+                    specialty={hog.specialty}
+                    weight={hog.weight}
+                    medal={hog["highest medal achieved"]}
+                    key={hog.name}/>)}
         </div>
     )
 }
