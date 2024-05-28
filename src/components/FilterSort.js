@@ -1,17 +1,19 @@
+import { Checkbox, FormField, Form } from "semantic-ui-react";
 
-
-function FilterGreased({ toggle, filterPigs, sort }){
-    return(
-        <div>
-            <select onChange={sort}>
-                <option>Sort Hogs By</option>
-                <option value="name">Name</option>
-                <option value="weight">Weight</option>
-            </select>
-
-            <button onClick={filterPigs}>{toggle ? "Show All Hogs" : "Show Greased Hogs"}</button>
-        </div>
-    )
+export default function FilterSort({ filtered, filterHogs, setSort }) {
+  return (
+    <>
+      <Checkbox
+        toggle
+        label="Show Greasy Pigs"
+        value={filtered}
+        onChange={filterHogs}
+      />
+      <select onChange={setSort}>
+        <option>Sort Hogs By</option>
+        <option value="name">Name</option>
+        <option value="weight">Weight</option>
+      </select>
+    </>
+  );
 }
-
-export default FilterGreased
